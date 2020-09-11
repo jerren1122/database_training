@@ -8,10 +8,12 @@ require './support/data_helper'
 class Execution
   include QueryHelper
   include DataHelper
-  attr_reader(:db_conn, :lt, :la)
+  attr_reader(:db_conn, :lt, :la, :ltc, :lta)
 
   def initialize
     @db_conn = Sequel.sqlite('./sample_database')
+    @ltc = LanguageTable.new(@db_conn)
+    @lta = LanguageAge.new(@db_conn)
     @lt = LanguageTable.new(@db_conn).table
     @la = LanguageAge.new(@db_conn).table
   end
@@ -31,6 +33,7 @@ class Execution
 end
 
 ex = Execution.new
-puts ex.execute_query(ex.db_conn, "simple_query")
-puts ex.execute_query(ex.db_conn, "join_query")
-puts ex.join_tables
+# puts ex.execute_query(ex.db_conn, "simple_query")
+# puts ex.execute_query(ex.db_conn, "join_query")
+# puts ex.lta.return_all_languages
+# puts ex.join_tables
