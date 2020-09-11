@@ -1,0 +1,4 @@
+simple_query: "select languages, users from language_table"
+join_query: "SELECT language_age.languages, language_table.users, language_age.year_founded
+             FROM language_age
+             INNER JOIN language_table ON language_age.languages=language_table.languages;"
